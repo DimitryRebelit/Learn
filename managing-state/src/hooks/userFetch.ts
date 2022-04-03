@@ -10,13 +10,14 @@ export default function useFetch<T>(url: string){
     useEffect(() => {
         async function init(){
             try{
-                const response = await fetch(`${baseUrl}/${url}`);
+                const response = await fetch(`${baseUrl}${url}`);
                 if (!response.ok){
                     throw response;
                 }
                 const result = await response.json()
                 setData(result);
             }catch (e) {
+                // debugger;
                 setError(e)
             }finally {
                 setLoading(false)
